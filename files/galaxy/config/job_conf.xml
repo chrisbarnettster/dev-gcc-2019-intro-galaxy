@@ -6,5 +6,11 @@
     <destinations default="slurm">
         <destination id="slurm" runner="slurm"/>
         <destination id="local" runner="local"/>
+        <destination id="slurm-2c" runner="slurm">
+            <param id="nativeSpecification">--nodes=1 --ntasks=2</param>
+        </destination>
     </destinations>
+    <tools>
+        <tool id="testing" destination="slurm-2c"/>
+    </tools>
 </job_conf>
