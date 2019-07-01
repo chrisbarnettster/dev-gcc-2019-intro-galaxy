@@ -20,4 +20,5 @@
     - uchida.miniconda
     - geerlingguy.pip
     - usegalaxy-eu.supervisor
+    - galaxyproject.nginx
 
