@@ -1,0 +1,53 @@
+postgresql_objects_users:
+  - name: galaxy
+postgresql_objects_databases:
+  - name: galaxy
+    owner: galaxy
+
+#Galaxy
+galaxy_create_user: true
+galaxy_separate_privileges: true
+galaxy_manage_paths: true
+galaxy_layout: root-dir
+galaxy_root: /srv/galaxy
+galaxy_file_path: /data
+galaxy_user: {name: galaxy, shell: /bin/bash}
+galaxy_commit_id: release_19.05
+galaxy_config_style: yaml
+galaxy_force_checkout: true # always checkout from code amnd overwrite local changes
+galaxy_file_path: /data
+miniconda_prefix: "{{ galaxy_tool_dependency_dir }}/_conda"
+
+galaxy_config:
+  galaxy:
+    admin_users: chrisbarnettster@gmail.com
+    brand: "Freiburg GCC"
+    database_connection: "postgresql:///galaxy?host=/var/run/postgresql"
+    file_path: /data
+    check_migrate_tools: false
+  uwsgi:
+    # Default values
+    http: 0.0.0.0:8080
+    buffer-size: 16384
+    processes: 1
+    threads: 4
+    offload-threads: 2
+    static-map:
+      - /static/style={{ galaxy_server_dir }}/static/style/blue
+      - /static={{ galaxy_server_dir }}/static
+    master: true
+    virtualenv: "{{ galaxy_venv_dir }}"
+    pythonpath: "{{ galaxy_server_dir }}/lib"
+    module: galaxy.webapps.galaxy.buildapp:uwsgi_app()
+    thunder-lock: true
+    die-on-term: true
+    hook-master-start:
+      - unix_signal:2 gracefully_kill_them_all
+      - unix_signal:15 gracefully_kill_them_all
+    py-call-osafterfork: true
+    enable-threads: true
+    # Our additions
+    mule:
+      - lib/galaxy/main.py
+      - lib/galaxy/main.py
+    farm: job-handlers:1,2

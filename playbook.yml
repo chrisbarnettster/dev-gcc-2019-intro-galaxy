@@ -1,6 +1,16 @@
 ---
 - hosts: galaxyservers
-  become: true  
+  become: true 
+  pre_tasks:
+    - name: install psycopg2
+      package:
+        name: ['git', 'python-virtualenv', 'make','python-psycopg2']
   roles:
     - my-role
     - geerlingguy.git
+    - galaxyproject.postgresql
+    - role:  natefoo.postgresql_objects
+      become: true
+      become_user: postgres
+    - galaxyproject.galaxy
+    - uchida.miniconda
