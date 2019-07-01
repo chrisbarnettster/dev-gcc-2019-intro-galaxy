@@ -1,6 +1,8 @@
 ---
 - hosts: galaxyservers
   become: true 
+  vars:
+    slurm_roles: ['controller', 'exec']
   pre_tasks:
     - name: install psycopg2
       package:
@@ -21,4 +23,11 @@
     - geerlingguy.pip
     - usegalaxy-eu.supervisor
     - galaxyproject.nginx
+    - galaxyproject.repos
+    - galaxyproject.slurm
+
+  post_tasks:
+    - name: Install slurm-drmaa
+      package:
+        name: slurm-drmaa1
 
