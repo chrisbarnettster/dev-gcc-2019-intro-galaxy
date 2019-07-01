@@ -1,2 +1,2 @@
-[my_hosts]
+[galaxyservers]
 gcc-37.training.galaxyproject.eu ansible_connection=local

@@ -1,5 +1,5 @@
 ---
-- hosts: my_hosts
+- hosts: galaxyservers
   become: true  
   roles:
     - my-role
