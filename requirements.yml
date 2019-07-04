@@ -16,3 +16,6 @@
   name: usegalaxy-eu.certbot
 - src: galaxyproject.repos
 - src: galaxyproject.slurm
+- galaxyproject.cvmfs
+- galaxyproject.pulsar
+

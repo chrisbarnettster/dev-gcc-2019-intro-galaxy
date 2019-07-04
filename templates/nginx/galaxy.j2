@@ -2,7 +2,7 @@
 ## This file is maintained by Ansible - CHANGES WILL BE OVERWRITTEN
 ##
 server {
-    listen        *:443 ssl default_server;
+    listen        *:80 default_server;
     server_name   "{{ inventory_hostname }}";
 
     access_log  /var/log/nginx/access.log;
