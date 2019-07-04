@@ -1,0 +1,25 @@
+- hosts: pulsarservers
+  pre_tasks:
+    - name: Install some packages
+      apt:
+        name: "{{ item }}"
+        state: installed
+        update_cache: yes
+      become: yes
+      with_items:
+        - build-essential
+        - vim
+        - git
+        - python-dev
+        - libcurl4-openssl-dev
+        - libssl-dev
+        - virtualenv
+    - name: chown the /mnt dir to ubuntu
+      file:
+        path: /mnt
+        owner: ubuntu
+        group: ubuntu
+        mode: 0755
+      become: yes
+  roles:
+    - galaxyproject.pulsar

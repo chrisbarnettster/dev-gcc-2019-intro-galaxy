@@ -1,0 +1,24 @@
+pulsar_server_dir: /mnt/pulsar/server
+pulsar_venv_dir: /mnt/pulsar/venv
+pulsar_config_dir: /mnt/pulsar/config
+pulsar_staging_dir: /mnt/pulsar/staging
+pulsar_pip_install: true
+
+pulsar_host: 0.0.0.0
+pulsar_port: 8913
+
+private_token: 'some_really_long_string_here_very_random_12345678910'
+
+pulsar_optional_dependencies:
+  - pyOpenSSL
+  - psutil
+  - pycurl
+  - requests
+  - poster
+
+pulsar_yaml_config:
+  dependency_resolvers_config_file: dependency_resolvers_conf.xml
+  conda_auto_init: True
+  conda_auto_install: True
+  staging_directory: "{{ pulsar_staging_dir }}"
+  private_token: "{{ private_token }}"
