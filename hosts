@@ -1,2 +1,5 @@
 [galaxyservers]
-gcc-37.training.galaxyproject.eu ansible_connection=local
+localhost ansible_connection=local
+
+[pulsarservers]
+115.146.92.55
