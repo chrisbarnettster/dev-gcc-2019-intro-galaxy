@@ -25,7 +25,7 @@ galaxy_config_files:
 galaxy_config:
   galaxy:
     admin_users: chrisbarnettster@gmail.com
-    brand: "Freiburg GCC"
+    brand: "Comp Chem ZA"
     database_connection: "postgresql:///galaxy?host=/var/run/postgresql"
     file_path: /data
     check_migrate_tools: false

@@ -1,2 +1,2 @@
 [galaxyservers]
-gcc-37.training.galaxyproject.eu ansible_connection=local
+galaxy-compchem.tk ansible_connection=local
