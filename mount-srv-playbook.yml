@@ -1,0 +1,14 @@
+---
+- hosts: galaxyservers
+  become: true 
+  tasks:
+    - name: Create a ext4 filesystem on /dev/vdb (not creating a partition first, oh well)
+      filesystem:
+        fstype: ext4
+        dev: /dev/vdb
+    - name: Mount vdb to /srv
+      mount:
+        path: /srv
+        src: /dev/vdb
+        fstype: ext4
+        state: mounted
