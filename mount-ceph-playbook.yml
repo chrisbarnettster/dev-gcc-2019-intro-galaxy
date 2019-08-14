@@ -1,0 +1,44 @@
+- hosts: galaxyservers
+  become: true
+  pre_tasks:
+    - name: update apt
+      become: true
+      apt:
+        update_cache: yes
+    - name: Install Ceph Dependencies
+      apt:
+        name: "{{ item }}"
+      become: yes
+      when: ansible_os_family == 'Debian'
+      with_items:
+        - autofs
+        - libcephfs2
+        - ceph-common
+  tasks:
+    - name: create a volume or dir for exporting data (at top level would be good)
+      file:
+        path: /mnt/cephfs
+        state: directory
+        mode: '0755'
+        owner: galaxy
+        group: galaxy
+        recurse: yes
+    - name: set perms on ceph secret
+      file:
+        path: /etc/ceph/cchemgalaxy.secret
+        state: touch
+        owner: root
+        group: root
+        mode: '0600'
+    - name: add galaxy user to the ceph group so can make dirs
+      user:
+        name: galaxy
+        groups: ceph
+        append: yes
+    - name: Mount ceph
+      mount:
+        path: /mnt/cephfs
+        src: 10.102.25.18:6789,10.102.25.19:6789,10.102.25.28:6789:/volumes/_nogroup/4b45a907-ae55-47ab-b9a2-1108c4019f0b 
+        fstype: ceph
+        opts: name=cchem-galaxy-rw,secretfile=/etc/ceph/cchemgalaxy.secret,noatime,_netdev
+        state: mounted
