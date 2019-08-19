@@ -6,7 +6,7 @@
   pre_tasks:
     - name: install psycopg2
       package:
-        name: ['git', 'python-virtualenv', 'make','python-psycopg2']
+        name: ['git', 'python-virtualenv', 'make','python-psycopg2','mercurial']
   handlers:
     - name: Restart Galaxy
       supervisorctl:
