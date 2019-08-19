@@ -19,7 +19,7 @@
   tasks:
     - name: create a volume or dir for exporting data (at top level would be good)
       file:
-        path: /mnt/cephfs
+        path: /srv
         state: directory
         mode: '0755'
         owner: galaxy
@@ -39,7 +39,7 @@
         append: yes
     - name: Mount ceph
       mount:
-        path: /mnt/cephfs
+        path: /srv
         src: 10.102.25.18:6789,10.102.25.19:6789,10.102.25.28:6789:/volumes/_nogroup/4b45a907-ae55-47ab-b9a2-1108c4019f0b 
         fstype: ceph
         opts: name=cchem-galaxy-rw,secretfile=/etc/ceph/cchemgalaxy.secret,noatime,_netdev
