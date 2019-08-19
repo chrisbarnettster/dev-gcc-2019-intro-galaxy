@@ -14,7 +14,7 @@
         - autofs
         - libcephfs2
         - ceph-common
-        - networking
+        - network-manager
         - ifupdown
   tasks:
     - name: create a volume or dir for exporting data (at top level would be good)
@@ -22,8 +22,8 @@
         path: /srv
         state: directory
         mode: '0755'
-        owner: galaxy
-        group: galaxy
+        owner: root
+        group: root
         recurse: yes
     - name: set perms on ceph secret
       file:
