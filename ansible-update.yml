@@ -1,0 +1,18 @@
+---
+- hosts: galaxyservers
+  become: true 
+  tasks:
+    - name: install ansible ppa repo on ubuntu
+      apt_repository:
+        repo: 'ppa:ansible/ansible'
+    - name: update apt
+      become: true
+      apt:
+        update_cache: yes
+    - name: Install new ansible
+      when: ansible_os_family == 'Debian'
+      become: yes
+      apt:
+        name: "ansible"
+        state: latest
+        update_cache: yes
