@@ -12,6 +12,7 @@ galaxy_layout: root-dir
 galaxy_root: /srv/galaxy
 galaxy_file_path: /data
 galaxy_user: {name: galaxy, shell: /bin/bash}
+galaxy_group: galaxy
 galaxy_commit_id: release_19.05
 galaxy_config_style: yaml
 galaxy_force_checkout: true # always checkout from code amnd overwrite local changes
