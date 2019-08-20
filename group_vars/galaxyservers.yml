@@ -6,18 +6,15 @@ postgresql_objects_databases:
 
 #Galaxy
 galaxy_create_user: true
-galaxy_separate_privileges: true
+galaxy_separate_privileges: false
 galaxy_manage_paths: true
 galaxy_layout: root-dir
 galaxy_root: /srv/galaxy
-galaxy_file_path: /data
+#galaxy_file_path: /data
 galaxy_user: {name: galaxy, shell: /bin/bash}
-galaxy_privsep_user: {name: gxprivuser, shell: /bin/bash}
-galaxy_group: gxgroup
 galaxy_commit_id: release_19.05
 galaxy_config_style: yaml
 galaxy_force_checkout: true # always checkout from code amnd overwrite local changes
-galaxy_file_path: /data
 miniconda_prefix: "{{ galaxy_tool_dependency_dir }}/_conda"
 
 galaxy_config_files:
@@ -44,6 +41,10 @@ galaxy_config:
     job_config_file: "{{ galaxy_config_dir }}/job_conf.xml"
     dependency_resolvers_config_file: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
     enable_quotas: True # set the quota's in the admin interface
+    smtp_server: smtp.mailgun.org
+    smtp_username: postmaster@sandbox7a0d00babb804f79ae7dff124ba074ac.mailgun.org
+    smtp_password: 942b95f4a9b56dcc03266acfc6f7c2fe-2ae2c6f3-58fea2fe
+    smtp_ssl: false
     tool_label_filters: 'global_host_filters:per_host_tool_labels'
     tool_section_filters: 'global_host_filters:per_host_tool_sections'
   uwsgi:
