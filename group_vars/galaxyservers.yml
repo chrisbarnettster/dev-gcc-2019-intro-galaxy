@@ -45,10 +45,10 @@ galaxy_config:
     job_config_file: "{{ galaxy_config_dir }}/job_conf.xml"
     dependency_resolvers_config_file: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
     enable_quotas: True # set the quota's in the admin interface
-    smtp_server: smtp.mailgun.org
-    smtp_username: postmaster@sandbox7a0d00babb804f79ae7dff124ba074ac.mailgun.org
-    smtp_password: 942b95f4a9b56dcc03266acfc6f7c2fe-2ae2c6f3-58fea2fe
-    smtp_ssl: false
+    smtp_server: "{{ vault_smtp_server }}"
+    smtp_username: "{{ vault_smtp_username }}"
+    smtp_password: "{{ vault_smtp_password }}"
+    smtp_ssl: true
     tool_label_filters: 'global_host_filters:per_host_tool_labels'
     tool_section_filters: 'global_host_filters:per_host_tool_sections'
   uwsgi:
