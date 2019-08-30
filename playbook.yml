@@ -3,6 +3,8 @@
   become: true 
   vars:
     slurm_roles: ['controller', 'exec']
+  vars_files:
+   - "secret_group_vars/galaxyservers.yml"
   pre_tasks:
     - name: install psycopg2
       package:

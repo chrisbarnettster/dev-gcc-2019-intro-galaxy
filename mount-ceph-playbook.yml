@@ -1,5 +1,7 @@
 - hosts: galaxyservers
   become: true
+  vars_files:
+   - "secret_group_vars/galaxyservers.yml"
   pre_tasks:
     - name: update apt
       become: true
