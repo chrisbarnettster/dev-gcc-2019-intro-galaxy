@@ -9,13 +9,15 @@ galaxy_create_user: true
 galaxy_separate_privileges: true
 galaxy_manage_paths: true
 galaxy_layout: root-dir
-galaxy_root: /srv/galaxy
+galaxy_root: {{ vault_galaxy_root }}/galaxy
 #galaxy_file_path: /data
-galaxy_user: {name: galaxy, shell: /bin/bash}
+galaxy_user: {name: galaxy, shell: /bin/bash,  uid: {{ vault_galaxy_user_uid }} }
+galaxy_group: {name: galaxy, gid: {{ vault_galaxy_group_gid }} }
 galaxy_commit_id: release_19.05
 galaxy_config_style: yaml
 galaxy_force_checkout: true # always checkout from code amnd overwrite local changes
 miniconda_prefix: "{{ galaxy_tool_dependency_dir }}/_conda"
+
 
 galaxy_config_files:
 #  - src: "files/galaxy/config/datatypes_conf.xml"
@@ -33,7 +35,7 @@ galaxy_config_templates:
 
 galaxy_config:
   galaxy:
-    admin_users: chrisbarnettster@gmail.com, chris.barnett@uct.ac.za
+    admin_users: {{ vault_admin_users }} 
     brand: "Comp Chem ZA"
     database_connection: "postgresql:///galaxy?host=/var/run/postgresql"
     file_path: /data
