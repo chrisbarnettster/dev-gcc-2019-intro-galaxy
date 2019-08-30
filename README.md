@@ -16,6 +16,9 @@ sudo apt-get install ansible -y
 # install roles
 ansible-galaxy install -p roles -r requirements.yml
 
+# mount some ceph storage
+time ansible-playbook -i hosts mount-ceph-playbook.yml --ask-vault-pass
+
 # run the playbook
 ansible-playbook -i hosts playbook.yml
 

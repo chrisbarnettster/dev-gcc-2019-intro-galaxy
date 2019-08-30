@@ -18,7 +18,12 @@
         - ceph-common
         - network-manager
         - ifupdown
+        - dhcpcd5
   tasks:
+    - name: force network restart (and hope ceph net is found)
+      service:
+        name: network
+        state: restarted
     - name: create a volume or dir for exporting data (at top level would be good)
       file:
         path: {{ vault_galaxy_root }}
