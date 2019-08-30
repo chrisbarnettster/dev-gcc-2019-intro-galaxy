@@ -29,6 +29,10 @@
     - galaxyproject.slurm
 
   post_tasks:
+    - name: Copy welcome.html
+      copy:
+        src: files/galaxy/welcome.html
+        dest: "{{ vault_galaxy_root }}/galaxy/server/static/"
     - name: Install slurm-drmaa
       package:
         name: slurm-drmaa1
