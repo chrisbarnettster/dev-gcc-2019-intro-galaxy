@@ -40,7 +40,7 @@ galaxy_config:
     admin_users: "{{ vault_admin_users }}"
     brand: "Comp Chem ZA"
     database_connection: "postgresql:///galaxy?host=/var/run/postgresql"
-    file_path: /data
+    # file_path: /data # is defined by the template don't mess with this right now
     check_migrate_tools: false
     job_config_file: "{{ galaxy_config_dir }}/job_conf.xml"
     dependency_resolvers_config_file: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
