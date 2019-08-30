@@ -18,3 +18,6 @@ ansible-galaxy install -p roles -r requirements.yml
 
 # run the playbook
 ansible-playbook -i hosts playbook.yml
+
+# run the playbook with vault pass and time it
+time ansible-playbook -i hosts playbook.yml --ask-vault-pass
