@@ -20,13 +20,11 @@
         - ifupdown
         - dhcpcd5
   tasks:
-    - name: force network restart (and hope ceph net is found)
-      service:
-        name: network
-        state: restarted
+    - name: kickstart dhcpcd5
+      command: dhcpcd5
     - name: create a volume or dir for exporting data (at top level would be good)
       file:
-        path: {{ vault_galaxy_root }}
+        path: "{{ vault_galaxy_root }}"
         state: directory
         mode: '0755'
         owner: root
@@ -46,7 +44,7 @@
         append: yes
     - name: Mount ceph
       mount:
-        path: {{ vault_galaxy_root }}
+        path: "{{ vault_galaxy_root }}"
         src: 10.102.25.18:6789,10.102.25.19:6789,10.102.25.28:6789:/volumes/_nogroup/4b45a907-ae55-47ab-b9a2-1108c4019f0b 
         fstype: ceph
         opts: name=cchem-galaxy-rw,secretfile=/etc/ceph/cchemgalaxy.secret,noatime,_netdev
