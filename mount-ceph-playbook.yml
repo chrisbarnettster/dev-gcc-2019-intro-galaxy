@@ -19,16 +19,16 @@
   tasks:
     - name: create a volume or dir for exporting data (at top level would be good)
       file:
-        path: /srv
+        path: {{ vault_galaxy_root }}
         state: directory
         mode: '0755'
         owner: root
         group: root
         recurse: yes
     - name: set perms on ceph secret
-      file:
-        path: /etc/ceph/cchemgalaxy.secret
-        state: touch
+      template:
+        src: files/ceph/cchemgalaxy.secret.j2
+        dest: /etc/ceph/cchemgalaxy.secret
         owner: root
         group: root
         mode: '0600'
@@ -39,7 +39,7 @@
         append: yes
     - name: Mount ceph
       mount:
-        path: /srv
+        path: {{ vault_galaxy_root }}
         src: 10.102.25.18:6789,10.102.25.19:6789,10.102.25.28:6789:/volumes/_nogroup/4b45a907-ae55-47ab-b9a2-1108c4019f0b 
         fstype: ceph
         opts: name=cchem-galaxy-rw,secretfile=/etc/ceph/cchemgalaxy.secret,noatime,_netdev
