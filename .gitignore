@@ -23,3 +23,7 @@ roles/usegalaxy-eu.certbot/
 roles/usegalaxy-eu.dynmotd/
 roles/usegalaxy-eu.galaxy-systemd/
 roles/usegalaxy-eu.gxadmin/
+roles/galaxyproject.repos/
+roles/galaxyproject.slurm/
+roles/uchida.miniconda/
+roles/usegalaxy-eu.supervisor/
