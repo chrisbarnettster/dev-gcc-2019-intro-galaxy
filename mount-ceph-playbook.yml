@@ -29,7 +29,7 @@
         mode: '0755'
         owner: root
         group: root
-        recurse: yes
+        recurse: no
     - name: set perms on ceph secret
       template:
         src: files/ceph/cchemgalaxy.secret.j2
