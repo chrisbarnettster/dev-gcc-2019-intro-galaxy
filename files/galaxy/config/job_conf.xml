@@ -2,15 +2,25 @@
     <plugins workers="4">
         <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>
         <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner"/>
+        <plugin id="cli" type="runner" load="galaxy.jobs.runners.cli:ShellJobRunner" />
     </plugins>
     <destinations default="slurm">
         <destination id="slurm" runner="slurm"/>
+	<destination id="slurm_ilifu" runner="cli">
+            <param id="embed_metadata_in_job">False</param>
+            <param id="shell_plugin">ParamikoShell</param>
+            <param id="job_plugin">Slurm</param>
+            <param id="shell_username">cbarnett</param>
+            <param id="shell_hostname">slurm.ilifu.ac.za</param>
+	    <param id="shell_private_key">/home/galaxy/.ssh/id_rsa</param>
+            <param id="job_time">1:00:00</param>
+            <param id="job_ncpus">4</param>
+            <param id="job_partition">Test</param>
         <destination id="local" runner="local"/>
-        <destination id="slurm-2c" runner="slurm">
-            <param id="nativeSpecification">--nodes=1 --ntasks=2</param>
         </destination>
     </destinations>
     <tools>
-        <tool id="testing" destination="slurm-2c"/>
+        <tool id="upload1" destination="slurm"/>
+        <tool id="testing" destination="slurm_ilifu"/>
     </tools>
 </job_conf>
