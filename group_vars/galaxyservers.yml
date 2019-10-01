@@ -3,6 +3,7 @@ postgresql_objects_users:
 postgresql_objects_databases:
   - name: galaxy
     owner: galaxy
+postgresql_backup_dir: /archive
 
 #Galaxy
 galaxy_create_user: true
