@@ -36,4 +36,8 @@
     - name: Install slurm-drmaa
       package:
         name: slurm-drmaa1
+    - name: Copy slurm update for ilifu issues (adds a PATH update)
+      copy:
+        src: files/galaxy/config/slurm.py
+        dest: "{{ vault_galaxy_root }}/galaxy/server/lib/galaxy/jobs/runners/util/cli/job/"
 

@@ -51,16 +51,16 @@ class Slurm(BaseJobExec):
         return dict(headers=template_scriptargs)
 
     def submit(self, script_file):
-        return '/opt/slurm/bin/sbatch %s' % script_file
+        return 'export PATH=/opt/slurm/bin/:$PATH && sbatch %s' % script_file
 
     def delete(self, job_id):
-        return '/opt/slurm/bin/scancel %s' % job_id
+        return 'export PATH=/opt/slurm/bin/:$PATH && scancel %s' % job_id
 
     def get_status(self, job_ids=None):
-        return "/opt/slurm/bin/squeue -a -o '%A %t'"
+        return "export PATH=/opt/slurm/bin/:$PATH && squeue -a -o '%A %t'"
 
     def get_single_status(self, job_id):
-        return "/opt/slurm/bin/squeue -a -o '%A %t' -j " + job_id
+        return "export PATH=/opt/slurm/bin/:$PATH && squeue -a -o '%A %t' -j " + job_id
 
     def parse_status(self, status, job_ids):
         # Get status for each job, skipping header.
