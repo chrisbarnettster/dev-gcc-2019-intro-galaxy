@@ -132,3 +132,8 @@ nginx_conf_ssl_certificate_key: /etc/ssl/user/privkey-nginx.pem
 # tools
 galaxy_local_tools:
 - testing.xml
+- absolute_binding.xml
+- absolute_solvation.xml
+- alchemical_setup.xml
+- testing.xml
+- yank_analysis.xml
