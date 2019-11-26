@@ -31,6 +31,8 @@
         <tool id="testing" destination="slurm_ilifu_test"/>
         <tool id="toolshed.g2.bx.psu.edu/repos/bgruening/ctb_rdkit_descriptors/ctb_rdkit_descriptors/0.6" destination="slurm_ilifu_xsmall"/>
         <tool id="toolshed.g2.bx.psu.edu/repos/chemteam/gmx_fep/gmx_fep/2019.1" destination="slurm_ilifu_medium"/>
+        <tool id="abbfe" destination="slurm_ilifu_medium"/>
+        <tool id="asfe" destination="slurm_ilifu_medium"/>
     </tools>
     <macros>
         <xml name="slurm_ilifu_destination" tokens="id,time,ncpus,partition">
