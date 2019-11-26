@@ -24,3 +24,22 @@ ansible-playbook -i hosts playbook.yml
 
 # run the playbook with vault pass and time it
 time ansible-playbook -i hosts playbook.yml --ask-vault-pass
+
+
+# Appendix
+
+## perms updates
+playbook perms are not working for me. Should add a post perms update or something. For now here is what works
+Need confidential data but also web service must work
+used `su -s /bin/bash www-data` to check where web user has perms
+
+```
+cd /path/to/galaxy
+sudo chown -R galaxy.galaxy config/
+sudo chown -R galaxy.galaxy local_tools
+sudo chown -R galaxy.galaxy server
+sudo chown -R galaxy.galaxy venv
+sudo chown galaxy.galaxy ../galaxy
+sudo chmod o+rx ../galaxy
+sudo chmod +rx server
+```
