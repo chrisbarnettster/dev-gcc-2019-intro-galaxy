@@ -52,6 +52,7 @@ galaxy_config:
     smtp_ssl: true
     tool_label_filters: 'global_host_filters:per_host_tool_labels'
     tool_section_filters: 'global_host_filters:per_host_tool_sections'
+    nginx_x_accel_redirect_base: '/_x_accel_redirect'
   uwsgi:
     # Default values
     socket: 127.0.0.1:8080

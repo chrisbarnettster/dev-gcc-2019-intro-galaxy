@@ -29,6 +29,11 @@ server {
         expires 24h;
     }
 
+    location /_x_accel_redirect/ {
+        internal;
+        alias /;
+    }
+
     # serve visualization and interactive environment plugin static content
     location ~ ^/plugins/(?<plug_type>[^/]+?)/((?<vis_d>[^/_]*)_?)?(?<vis_name>[^/]*?)/static/(?<static_file>.*?)$ {
         alias {{ galaxy_server_dir }}/config/plugins/$plug_type/;
