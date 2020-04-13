@@ -47,6 +47,7 @@
                 <param id="job_time">@TIME@</param>
                 <param id="job_ncpus">@NCPUS@</param>
                 <param id="job_partition">@PARTITION@</param>
+                <param id="local_slots">@NCPUS@</param>
             </destination>
         </xml>
     </macros>
