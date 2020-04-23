@@ -20,7 +20,7 @@
         <expand macro="slurm_ilifu_destination" id="slurm_ilifu_medium" ncpus="16" time="72:00:00" partition="Main"/>
         <expand macro="slurm_ilifu_destination" id="slurm_ilifu_highmem_medium" ncpus="16" time="72:00:00" partition="HighMem"/>
         <expand macro="slurm_ilifu_destination" id="slurm_ilifu_highmem_large" ncpus="32" time="72:00:00" partition="HighMem"/>
-        <expand macro="slurm_ilifu_destination" id="slurm_ilifu_longrunning_medium" ncpus="16" time="144:00:00" partition="Main"/>
+        <expand macro="slurm_ilifu_destination" id="slurm_ilifu_longrunning_medium" ncpus="16" time="168:00:00" partition="Main"/>
         <expand macro="slurm_ilifu_destination" id="slurm_ilifu_longrunning_large" ncpus="32" time="144:00:00" partition="Main"/>
         <expand macro="slurm_ilifu_destination" id="slurm_ilifu_gpu" ncpus="1" time="72:00:00" partition="GPU"/>
 
@@ -30,10 +30,9 @@
         <tool id="upload1" destination="slurm"/>
         <tool id="testing" destination="slurm_ilifu_test"/>
         <tool id="toolshed.g2.bx.psu.edu/repos/bgruening/ctb_rdkit_descriptors/ctb_rdkit_descriptors/0.6" destination="slurm_ilifu_xsmall"/>
-        <tool id="toolshed.g2.bx.psu.edu/repos/chemteam/gmx_fep/gmx_fep/2019.1" destination="slurm_ilifu_medium"/>
+        <tool id="toolshed.g2.bx.psu.edu/repos/chemteam/gmx_fep/gmx_fep/2019.1" destination="slurm_ilifu_longrunning_medium"/>
         <tool id="abbfe" destination="slurm_ilifu_medium"/>
         <tool id="asfe" destination="slurm_ilifu_medium"/>
-        <tool id="gmx_fep" destination="slurm_ilifu_longrunning_medium"/>
     </tools>
     <macros>
         <xml name="slurm_ilifu_destination" tokens="id,time,ncpus,partition">
